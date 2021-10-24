@@ -7,6 +7,8 @@ external_stylesheets = [dbc.themes.BOOTSTRAP, 'https://codepen.io/chriddyp/pen/b
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+server = app.server
+
 app.layout = layout
 
 import_callbacks(app)
