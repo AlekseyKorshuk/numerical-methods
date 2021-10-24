@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 layout = html.Div([
     dbc.Modal(
         [
-            dbc.ModalHeader(dbc.ModalTitle("Warning!",style={"fontSize": 32, "fontWeight": "bold"})),
+            dbc.ModalHeader(dbc.ModalTitle("Warning!", style={"fontSize": 32, "fontWeight": "bold"})),
             dbc.ModalBody("Current inputs are out of the domain."),
             dbc.ModalBody("Please change your input parameters."),
             # dbc.ModalFooter(
@@ -20,7 +20,7 @@ layout = html.Div([
     ),
     html.Div(
         [
-            html.H3("Differential equations | Computational practicum"),
+            html.H3("Differential equations | Numerical methods"),
         ], style={'display': 'inline-block', 'width': '100%', 'text-align': 'center'}
     ),
     html.Div(
@@ -109,6 +109,21 @@ layout = html.Div([
     html.Div(
         dcc.Graph(id='table')
         # html.Iframe(id = 'table', height=500, width="100%", style={'frameBorder':"0"})
-    )
+    ),
+    html.Footer(
+        [
+            dcc.Markdown("**Created by [Aleksey Korshuk](https://github.com/AlekseyKorshuk)**"),
+            dcc.Markdown(
+                "[![Follow](https://img.shields.io/github/followers/AlekseyKorshuk?style=social)](https://github.com/AlekseyKorshuk)"),
+            dcc.Markdown(
+                "[![GitHub stars](https://img.shields.io/github/stars/AlekseyKorshuk/numerical-methods?style=social)](https://github.com/AlekseyKorshuk/numerical-methods)"
+            ),
+
+        ],
+        style={'display': 'inline-block', 'width': '100%', 'text-align': 'center'}
+    ),
+    html.Br(),
+    html.Br(),
+    html.Br(),
 
 ])
