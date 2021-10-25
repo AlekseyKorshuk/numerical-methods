@@ -25,13 +25,18 @@ layout = html.Div([
     ),
     html.Div(
         [
-            "Function y:",
+            "Formula of y:",
             html.Br(),
             dcc.Input(id='y-function', value='x*(-2/math.sqrt(x)/self.c + 1/x/self.c/self.c + 2)', type='text'),
             html.Br(),
-            "Function y':",
+            "Formula of y':",
             html.Br(),
             dcc.Input(id="y-prime-function", value='(y - x)**0.5 / x**0.5 + 1', type='text'),
+            html.Br(),
+            "Formula of coefficient:",
+            html.Br(),
+            dcc.Input(id="coefficient-function", value='(-1 * math.sqrt(x) - math.sqrt(y - x)) / (y - 2 * x)',
+                      type='text'),
             html.Br(),
 
         ],
@@ -63,15 +68,7 @@ layout = html.Div([
             "End number of points:‏‏‎",
             html.Br(),
             dcc.Input(id='final-n', value='15', type='number', step=1),
-            html.Br(),
-            "Select coefficient:",
-            html.Br(),
-            dcc.RadioItems(
-                id='coefficient',
-                options=[{'label': i, 'value': i} for i in [1, 2]],
-                value=1,
-                labelStyle={'display': 'inline-block', 'width': '100%'}
-            ),
+
         ],
         style={'display': 'inline-block', 'width': '100%', 'padding': '0px 44%'}
     ),

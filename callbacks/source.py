@@ -32,11 +32,11 @@ def import_callbacks(
         Input(component_id='y-prime-function', component_property='value'),
         Input(component_id='initial-solution-x', component_property='value'),
         Input(component_id='initial-solution-y', component_property='value'),
-        Input(component_id='coefficient', component_property='value'),
+        Input(component_id='coefficient-function', component_property='value'),
         # Input("close", "n_clicks"),
         [State("warning", "is_open")],
     )
-    def update_output_div(x_0, x_1, n_0, n_1, y_formula, y_prime_formula, x, y, coefficient_index,
+    def update_output_div(x_0, x_1, n_0, n_1, y_formula, y_prime_formula, x, y, coefficient_formula,
                           is_open) -> Optional[List[dash.dependencies.DashDependency]]:
         """
         Updates all graphs of the app
@@ -63,10 +63,10 @@ def import_callbacks(
         y_0 = float(y)
 
         try:
-            euler_method = EulerMethod(x_0, x_1, h, y_formula, y_prime_formula, x, y_0, coefficient_index)
+            euler_method = EulerMethod(x_0, x_1, h, y_formula, y_prime_formula, x, y_0, coefficient_formula)
             improved_euler_method = ImprovedEulerMethod(x_0, x_1, h, y_formula, y_prime_formula, x, y_0,
-                                                        coefficient_index)
-            rungekutta_method = RungeKuttaMethod(x_0, x_1, h, y_formula, y_prime_formula, x, y_0, coefficient_index)
+                                                        coefficient_formula)
+            rungekutta_method = RungeKuttaMethod(x_0, x_1, h, y_formula, y_prime_formula, x, y_0, coefficient_formula)
             methods = [euler_method, improved_euler_method, rungekutta_method]
 
             fig = get_methods_graph(methods)
@@ -74,7 +74,7 @@ def import_callbacks(
             fig_gte = get_gte_graph(methods)
             table = get_table(methods)
             total_error_fig = get_total_error_over_number_graph(x_0, x_1, n_0, n_1, y_formula, y_prime_formula, x, y_0,
-                                                                coefficient_index)
+                                                                coefficient_formula)
         except (ValueError, ZeroDivisionError, IndexError):
             return [go.Figure(), go.Figure(), go.Figure(), go.Figure(), go.Figure(), None, True]
         return [fig, fig_lte, fig_gte, total_error_fig, table, None, False]

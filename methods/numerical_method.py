@@ -15,7 +15,7 @@ class NumericalMethod:
             y_prime_formula: Optional[str],
             x: Optional[float],
             y: Optional[float],
-            coefficient_index: Optional[int]
+            coefficient_formula: Optional[str]
     ):
         """
         Constructor with parameters
@@ -27,7 +27,7 @@ class NumericalMethod:
         :param y_prime_formula: Formula of y'
         :param x: Initial X in IVP
         :param y: Initial Y in IVP
-        :param coefficient_index: One of 2 possible coefficients, stars from 1
+        :param coefficient_formula: Formula of C
         """
         self.title = title
         self.x_0 = x_0
@@ -38,10 +38,7 @@ class NumericalMethod:
         self.y_formula = y_formula
         self.y_prime_formula = y_prime_formula
 
-        self.c = [
-            (-1 * math.sqrt(x) - math.sqrt(y - x)) / (y - 2 * x),
-            (-1 * math.sqrt(x) + math.sqrt(y - x)) / (y - 2 * x),
-        ][coefficient_index - 1]
+        self.c = float(eval(coefficient_formula))
 
         self.calculate()
 
@@ -56,6 +53,7 @@ class NumericalMethod:
         :param y: Y value
         :return: Y'
         """
+
         return eval(self.y_prime_formula)
 
     def get_y(

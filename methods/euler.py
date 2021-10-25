@@ -12,7 +12,7 @@ class EulerMethod(NumericalMethod):
             y_prime_formula: Optional[str],
             x: Optional[float],
             y: Optional[float],
-            coefficient_index: Optional[int]
+            coefficient_index: Optional[str]
     ):
         """
         Constructor with parameters
@@ -23,7 +23,7 @@ class EulerMethod(NumericalMethod):
         :param y_prime_formula: Formula of y'
         :param x: Initial X in IVP
         :param y: Initial Y in IVP
-        :param coefficient_index: One of 2 possible coefficients, stars from 1
+        :param coefficient_index: Formula of C
         """
         super(EulerMethod, self).__init__("Euler", x_0, x_1, h, y_formula, y_prime_formula, x, y, coefficient_index)
 
