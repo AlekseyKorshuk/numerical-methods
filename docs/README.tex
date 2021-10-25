@@ -29,15 +29,16 @@
 \setlength{\parindent}{0.0in}
 \setlength{\parskip}{0.05in}
 
+% Edit these as appropriate
 \newcommand\course{[F21] DE}
-\newcommand\hwnumber{1}
-\newcommand\NetIDa{a.korshuk@innopolis.university}
-\newcommand\NetIDb{Aliaksei Korshuk}
+\newcommand\hwnumber{1}                  % <-- homework number
+\newcommand\NetIDa{a.korshuk@innopolis.university}           % <-- NetID of person #1
+\newcommand\NetIDb{Aliaksei Korshuk}           % <-- NetID of person #2 (Comment this line out for problem sets)
 
 \pagestyle{fancyplain}
 \headheight 35pt
 \lhead{\NetIDa}
-\lhead{\NetIDa\\\NetIDb\\}
+\lhead{\NetIDa\\\NetIDb\\}                 % <-- Comment this line out for problem sets (make sure you are person #1)
 \chead{\textbf{ \Large \\Computational Practicum }}
 \rhead{\course \\ \today \\}
 \lfoot{}
@@ -46,6 +47,38 @@
 \headsep 1.5em
 
 \begin{document}
+
+
+\begin{center}
+    \section*{Task}
+\end{center}
+Given the initial value problem with the ODE of the first order and some
+interval:
+
+\begin{equation*}
+ \begin{cases}
+   y'=f(x,y)
+   \\
+   y(x_0) = y_0
+   \\
+   x \in (x_0, X)
+ \end{cases}
+\end{equation*}
+Using this application construct a corresponding approximation of the solution of a given initial value problem. Implement the exact solution of an IVP in your application. Provide data visualization capability (charts plotting) in the user interface of your application. Compare approximation errors of these methods plotting the corresponding chart for different grid sizes.
+
+\begin{center}
+    \subsection*{Variant 23}
+\end{center}
+
+\begin{equation*}
+ \begin{cases}
+   y'=\frac {\sqrt {y - x}}{\sqrt{x}} + 1
+   \\
+   y(1) = 10
+   \\
+   x \in (1, 15)
+ \end{cases}
+\end{equation*}
 
 \begin{center}
     \section*{Source code}
@@ -284,5 +317,10 @@ approximation error.
         \includegraphics[width=1\linewidth]{callback.png}
     % \caption{Unified Modeling Language diagram}
 \end{figure}
+
+\begin{center}
+    \section*{Conclusion}
+\end{center}
+All in all, after comparing all methods, we can note, that method Runge-Kutta is the most accurate. Moreover, the more points we use, the less total approximation error.
 
 \end{document}
